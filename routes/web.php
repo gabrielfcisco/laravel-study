@@ -18,17 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Site')->group(callback: function(){
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('site.home');
 
-    Route::get('produtos', [CategoryController::class, 'index']);
+    Route::get('produtos', [CategoryController::class, 'index'])->name('site.products');
     Route::get('produtos/{slug}', [CategoryController::class, 'show']);
 
-    Route::get('blog', [BlogController::class, 'index']);
+    Route::get('blog', [BlogController::class, 'index'])->name('site.blog');
 
     Route::get('sobre', function (){
         return view('site.about.index');
-    });
+    })->name('site.about');
 
-    Route::get('contato', [ContactController::class, 'index']);
+    Route::get('contato', [ContactController::class, 'index'])->name('site.contact');
     Route::post('contato', [ContactController::class, 'create']);
 });
