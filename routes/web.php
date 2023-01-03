@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Blog')->group(callback: function(){
     Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/login', [BlogController::class, 'login'])->name('blog.login');
+    Route::post('/login', [BlogController::class, 'auth'])->name('login');
 });
